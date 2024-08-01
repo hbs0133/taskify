@@ -1,0 +1,142 @@
+@use '@/styles/index.scss' as *;
+
+.container {
+  width: 1022px;
+  @include Flex(column, null, null);
+  gap: 20px;
+  padding: 32px 0;
+  @include border-radius(8px);
+  background-color: $white;
+
+  .title {
+    padding-left: 28px;
+    @include FontStyle(24, 700);
+    color: $black-33;
+  }
+
+  .search-wrapper {
+    position: relative;
+    @include Size(966px, 40px);
+    margin: 4px 0 0 28px;
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+    }
+
+    input {
+      @include Size(100%);
+      padding-left: 48px;
+      border: 1px solid $gray-d9;
+      @include border-radius(6px);
+
+      &::placeholder {
+        @include FontStyle(16, 400);
+        color: $gray-9f;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .invite-list-table {
+    margin-top: 4px;
+    @include Flex(column, center, null);
+    gap: 20px;
+
+    .invite-list-table-header {
+      margin-left: 76px;
+      @include Flex(row, space-between, center);
+      @include FontStyle(16, 400);
+      color: $gray-9f;
+      div {
+        flex: 1;
+      }
+
+      .invite-list-table-header-invite-accepted {
+        transform: translateX(60px);
+      }
+    }
+
+    .invite-list-table-body {
+      @include Flex(column, null, null);
+      gap: 20px;
+    }
+  }
+
+  .empty-invitation-wrapper {
+    height: 309px;
+    @include Flex(row, center, center);
+
+    .empty-invitation {
+      @include Flex(column, center, center);
+      gap: 24px;
+
+      p {
+        @include FontStyle(18, 400);
+        color: $gray-9f;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    width: 504px;
+    padding: 18px 0;
+
+    .title {
+      padding-left: 16px;
+    }
+
+    .search-wrapper {
+      width: 448px;
+    }
+
+    .invite-list-table {
+      .invite-list-table-header {
+        margin-left: 28px;
+
+        .invite-list-table-header-invite-accepted {
+          transform: translateX(50px);
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .container {
+    width: 260px;
+    gap: 13px;
+
+    .title {
+      @include FontStyle(20, 700);
+    }
+
+    .search-wrapper {
+      width: 228px;
+      margin: 4px 0 0 16px;
+
+      input {
+        &::placeholder {
+          @include FontStyle(14, 400);
+        }
+      }
+    }
+
+    .invite-list-table {
+      .invite-list-table-header {
+        display: none;
+      }
+
+      .invite-list-table-body {
+        gap: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@use '@/styles/index.scss' as *;
+
+.invite-list-item-wrapper {
+  @include Flex(row, null, center);
+  padding-bottom: 20px;
+  padding-left: 76px;
+  @include FontStyle(16, 400);
+  color: $black-33;
+  border-bottom: 1px solid $gray-ee;
+
+  div {
+    flex: 1;
+  }
+
+  .invite-list-item-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .invite-list-header-title {
+    display: none;
+  }
+}
+
+@include tablet {
+  .invite-list-item-wrapper {
+    padding-left: 28px;
+  }
+}
+
+@include mobile {
+  .invite-list-item-wrapper {
+    @include Flex(column, null, flex-start);
+    gap: 14px;
+    padding: 14px 16px;
+    @include FontStyle(14, 400);
+
+    .invite-list-item-name,
+    .invite-list-item-visiter {
+      @include Flex(row, null, center);
+      gap: 24px;
+    }
+
+    .invite-list-header-title {
+      display: block;
+      width: 38px;
+      color: $gray-9f;
+    }
+
+    .invite-list-item-invite-accepted-buttons {
+      button {
+        width: 109px;
+      }
+    }
+  }
+}
