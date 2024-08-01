@@ -1,0 +1,67 @@
+@use '@/styles/index.scss' as *;
+@import '@/styles/mixins/mixinHeader';
+
+.header-container {
+  @include Flex(row, space-between, center);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  @include Height(70px);
+  @include Padding(0 70px, 0 40px, 0 24px);
+  border-bottom: 1px solid $gray-d9;
+
+  background: $white;
+  color: $black;
+
+  box-sizing: border-box;
+
+  &.dark {
+    background: $black;
+    color: $white;
+  }
+}
+
+.logo-container {
+  @include Flex(row, space-between, center);
+  @include Width(121px, 121px, 24px);
+  @include Height(39px, 39px, 28px);
+}
+
+.dark .logo-container {
+  filter: brightness(0) invert(1);
+}
+
+.logo-icon-wrapper {
+  position: relative;
+
+  @include Width(35px, 35px, 24px);
+  @include Height(35px, 35px, 28px);
+
+  overflow: hidden;
+}
+
+.logo-text-wrapper {
+  @include mobile {
+    display: none;
+  }
+
+  position: relative;
+
+  width: 80px;
+  height: 22px;
+
+  overflow: hidden;
+}
+
+.sign-container {
+  @include Flex(row, space-between, center);
+  @include Gap(36px, 36px, 24px);
+  background: inherit;
+  color: inherit;
+  p {
+    @include FontStyle(16, 400, 16, 14);
+  }
+}

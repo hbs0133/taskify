@@ -1,0 +1,69 @@
+@use '@/styles/index.scss' as *;
+
+@mixin Width($desktop-size, $tablet-size: null, $mobile-size: null) {
+  // 데스크탑에서 너비 적용
+  @include desktop {
+    width: #{$desktop-size};
+  }
+
+  // 태블릿에서 너비 적용
+  @include tablet {
+    width: #{$tablet-size};
+  }
+
+  // 모바일에서 너비 적용
+  @include mobile {
+    width: #{$mobile-size};
+  }
+}
+
+@mixin Height($desktop-size, $tablet-size: null, $mobile-size: null) {
+  // 데스크탑에서 높이 적용
+  @include desktop {
+    height: #{$desktop-size};
+  }
+
+  // 태블릿에서 높이 적용
+  @include tablet {
+    height: if($tablet-size != null, $tablet-size, $desktop-size);
+  }
+
+  // 모바일에서 높이 적용
+  @include mobile {
+    height: if($mobile-size != null, $mobile-size, $desktop-size);
+  }
+}
+
+@mixin Padding($desktop-size, $tablet-size: null, $mobile-size: null) {
+  // 데스크탑에서 패딩 적용
+  @include desktop {
+    padding: #{$desktop-size};
+  }
+
+  // 태블릿에서 패딩 적용
+  @include tablet {
+    padding: if($tablet-size != null, $tablet-size, $desktop-size);
+  }
+
+  // 모바일에서 패딩 적용
+  @include mobile {
+    padding: if($mobile-size != null, $mobile-size, $desktop-size);
+  }
+}
+
+@mixin Gap($desktop-size, $tablet-size: null, $mobile-size: null) {
+  // 데스크탑에서 패딩 적용
+  @include desktop {
+    gap: #{$desktop-size};
+  }
+
+  // 태블릿에서 패딩 적용
+  @include tablet {
+    gap: if($tablet-size != null, $tablet-size, $desktop-size);
+  }
+
+  // 모바일에서 패딩 적용
+  @include mobile {
+    gap: if($mobile-size != null, $mobile-size, $desktop-size);
+  }
+}
