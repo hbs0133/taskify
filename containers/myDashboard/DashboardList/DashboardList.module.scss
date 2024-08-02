@@ -1,0 +1,38 @@
+@use '@/styles/index.scss' as *;
+
+.container {
+  @include ResponsiveWidth(1022px, 504px, 260px);
+  .dash-board-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 13px;
+  }
+  .pagination {
+    @include Flex(row, null, center);
+    gap: 16px;
+    width: 168px;
+    margin-top: 12px;
+    margin-left: auto;
+    @include FontStyle(14, 400);
+    color: $black-33;
+  }
+}
+
+@include tablet {
+  .container {
+    .dash-board-list {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: minmax(0, auto);
+    }
+  }
+}
+
+@include mobile {
+  .container {
+    .dash-board-list {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+    }
+  }
+}
