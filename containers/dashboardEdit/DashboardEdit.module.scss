@@ -1,0 +1,7 @@
+@use '@/styles/index.scss' as *;
+
+.container {
+  @include Flex(column, null, null);
+  gap: 16px;
+  @include ResponsivePadding(20px, 20px, 12px);
+}

@@ -1,0 +1,21 @@
+@use '@/styles/index.scss' as *;
+
+.container {
+  @include Flex(row, space-between, center);
+  @include ResponsivePadding(16px 28px, 16px 28px, 12px 20px);
+  border-bottom: 1px solid $gray-ee;
+  .member-info {
+    @include Flex(row, null, center);
+    @include ResponsiveGap(12, 12, 8);
+    .member-profile-image {
+      object-fit: cover;
+    }
+    .member-name {
+      @include FontStyle('lg', 'regular', 'lg', 'md');
+      color: $black-33;
+    }
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}

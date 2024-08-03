@@ -1,0 +1,25 @@
+@use '@/styles/index.scss' as *;
+
+.container {
+  @include Flex(column, null, null);
+  @include ResponsiveWidth(620px, 544px, 284px);
+  padding-top: 26px;
+  @include border-radius(16px);
+  .section-header {
+    @include Flex(row, space-between, center);
+    @include ResponsivePadding(0 28px, 0 28px, 0 20px);
+    .section-header-title {
+      @include FontStyle('2xl', 'bold', '2xl', 'xl');
+    }
+  }
+  .member-list {
+    @include Flex(column, null, null);
+    margin-top: 27px;
+    .member-list-header-title {
+      margin-bottom: 1px;
+      @include ResponsivePadding(0 28px, 0 28px, 0 20px);
+      @include FontStyle('lg', 'regular', 'lg', 'md');
+      color: $gray-9f;
+    }
+  }
+}

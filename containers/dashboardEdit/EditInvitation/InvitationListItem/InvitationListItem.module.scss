@@ -1,0 +1,14 @@
+@use '@/styles/index.scss' as *;
+
+.container {
+  @include Flex(row, space-between, center);
+  @include ResponsivePadding(16px 28px, 16px 28px, 12px 20px);
+  border-bottom: 1px solid $gray-ee;
+  .invitation-email {
+    @include FontStyle('lg', 'regular', 'lg', 'md');
+    color: $black-33;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}

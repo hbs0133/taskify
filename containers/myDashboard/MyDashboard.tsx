@@ -1,5 +1,5 @@
 import DashboardList from './DashboardList/DashboardList';
-import InvitedDashboard from './invitedDashboard/InvitedDashboard';
+import InvitedDashboard from './InvitedDashboard/InvitedDashboard';
 import styles from './MyDashboard.module.scss';
 
 function MyDashboard() {

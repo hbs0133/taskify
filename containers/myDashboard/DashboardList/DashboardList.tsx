@@ -1,5 +1,5 @@
-import Button from '@/components/Button';
 import styles from './DashboardList.module.scss';
+import Button from '@/components/Button';
 import ButtonSet from '@/components/ButtonSet';
 
 function DashboardList() {
