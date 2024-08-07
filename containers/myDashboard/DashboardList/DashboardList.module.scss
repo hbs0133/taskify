@@ -16,6 +16,9 @@
     margin-left: auto;
     @include FontStyle(14, 400);
     color: $black-33;
+    .pagination-number {
+      white-space: nowrap;
+    }
   }
 }
 

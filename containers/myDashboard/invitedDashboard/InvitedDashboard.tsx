@@ -16,10 +16,11 @@ function InvitedDashboard() {
     },
   });
 
-  const searchData = data.filter((item: IInvitation) =>
-    item.dashboard.title.toLowerCase().includes(searchValue.toLowerCase()),
-  );
-
+  const searchData = data
+    ? data.filter((item: IInvitation) =>
+        item.dashboard.title.toLowerCase().includes(searchValue.toLowerCase()),
+      )
+    : [];
   return (
     <div className={styles['container']}>
       <h2 className={styles['title']}>초대받은 대시보드</h2>

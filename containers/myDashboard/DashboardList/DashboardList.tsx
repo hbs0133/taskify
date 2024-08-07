@@ -3,45 +3,59 @@ import Button from '@/components/Button';
 import ButtonSet from '@/components/ButtonSet';
 import { useQuery } from '@tanstack/react-query';
 import instance from '@/services/axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import ButtonSetForPagination from '@/components/ButtonSetForPagination/Button';
 
 const fetchDashboards = async (cursorId: number, page: number) => {
   const response = await instance.get(
-    `/dashboards?navigationMethod=pagination&cursorId=${cursorId}&page=${page}&size=6`,
+    `/dashboards?navigationMethod=pagination&cursorId=${cursorId}&page=${page}&size=5`,
   );
-  return response.data.dashboards;
+  return response.data;
 };
 
 function DashboardList() {
   const [page, setPage] = useState(1);
   const [cursorId, setCursorId] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
   const router = useRouter();
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['dashboards', cursorId, page, 6],
+    queryKey: ['dashboards', cursorId, page, 5],
     queryFn: () => fetchDashboards(cursorId, page),
   });
 
   const handleNextPage = () => {
-    setPage((prevPage) => prevPage + 1);
+    if (data && data.dashboards.length > 0 && page < totalPage) {
+      setPage((prevPage) => prevPage + 1);
+    }
   };
 
   const handlePreviousPage = () => {
-    setPage((prevPage) => Math.max(prevPage - 1, 1));
+    if (page > 1) {
+      setPage((prevPage) => prevPage - 1);
+    }
   };
 
   const handleClickDashboard = (dashboardId: number) => {
     router.push(`/dashboard/${dashboardId}`);
   };
 
+  useEffect(() => {
+    if (data) {
+      const totalCount = data.totalCount;
+      const pageSize = 5;
+      setTotalPage(Math.ceil(totalCount / pageSize));
+    }
+  }, [data]);
+
+  console.log(data);
   return (
     <div className={styles['container']}>
       <div className={styles['dash-board-list']}>
         <Button buttonType='add-board'>새로운 대시보드</Button>
         {data &&
-          data.map((item: IDashboard) => (
+          data.dashboards.map((item: IDashboard) => (
             <Button
               key={item.id}
               buttonType='dashboard'
@@ -53,10 +67,14 @@ function DashboardList() {
           ))}
       </div>
       <div className={styles['pagination']}>
-        <div>
-          <span>1 </span>페이지 중 <span> 1</span>
+        <div className={styles['pagination-number']}>
+          <span>{totalPage} </span>페이지 중 <span>{page}</span>
         </div>
-        <ButtonSetForPagination size='large'></ButtonSetForPagination>
+        <ButtonSetForPagination
+          size='large'
+          onClickToNext={handleNextPage}
+          onClickToPrev={handlePreviousPage}
+        ></ButtonSetForPagination>
       </div>
     </div>
   );
