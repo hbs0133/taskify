@@ -1,6 +1,8 @@
 @use '@/styles/index.scss' as *;
+@import '@/styles/mixins/mixinModal.scss';
 
 .modal-container {
+  @include ModalStyle;
   @include Flex(column, space-around, flex-start);
   gap: 16px;
 
