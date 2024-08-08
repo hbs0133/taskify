@@ -5,6 +5,8 @@ import instance from '@/services/axios';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import ButtonSetForPagination from '@/components/ButtonSetForPagination/Button';
+import CreateDashboardModal from '../CreateDashboardModal';
+import { useCreateModalStore } from '@/stores/modalStore';
 
 const fetchDashboards = async (cursorId: number, page: number) => {
   const response = await instance.get(
@@ -17,6 +19,7 @@ function DashboardList() {
   const [page, setPage] = useState(1);
   const [cursorId, setCursorId] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
+  const { isModalOpen, setOpenModal } = useCreateModalStore();
   const router = useRouter();
 
   const { isLoading, error, data } = useQuery({
@@ -52,7 +55,9 @@ function DashboardList() {
   return (
     <div className={styles['container']}>
       <div className={styles['dash-board-list']}>
-        <Button buttonType='add-board'>새로운 대시보드</Button>
+        <Button buttonType='add-board' onClick={setOpenModal}>
+          새로운 대시보드
+        </Button>
         {data &&
           data.dashboards.map((item: IDashboard) => (
             <Button
@@ -75,6 +80,7 @@ function DashboardList() {
           onClickToPrev={handlePreviousPage}
         ></ButtonSetForPagination>
       </div>
+      {isModalOpen && <CreateDashboardModal />}
     </div>
   );
 }
