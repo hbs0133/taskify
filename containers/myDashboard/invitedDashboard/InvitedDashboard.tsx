@@ -4,6 +4,7 @@ import { IconEmptyInvitation, IconSearch } from '@/assets/icongroup';
 import { useQuery } from '@tanstack/react-query';
 import instance from '@/services/axios';
 import { useState } from 'react';
+import EmptyColumn from '@/containers/dashboard/id/column/EmptyColumn';
 
 function InvitedDashboard() {
   const [searchValue, SetSearchValue] = useState('');
@@ -57,12 +58,7 @@ function InvitedDashboard() {
           </div>
         </>
       ) : (
-        <div className={styles['empty-invitation-wrapper']}>
-          <div className={styles['empty-invitation']}>
-            <IconEmptyInvitation />
-            <p>아직 초대받은 대시보드가 없어요</p>
-          </div>
-        </div>
+        <EmptyColumn />
       )}
     </div>
   );
