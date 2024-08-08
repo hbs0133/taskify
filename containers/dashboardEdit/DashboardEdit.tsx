@@ -4,16 +4,16 @@ import EditDashboardName from './EditDashboardName/EditDashboardName';
 import EditInvitation from './EditInvitation/EditInvitation';
 import EditMember from './EditMember/EditMember';
 import Button from '@/components/Button';
-
-//데이터 페칭전 임시id값입니다.
-const id = 1;
+import { useRouter } from 'next/router';
 
 function DashboardEdit() {
+  const router = useRouter();
+  const { id } = router.query;
+
   return (
     <div className={styles['container']}>
-      {/*Link 버튼 수정예정 */}
       <Link href={`dashboard/${id}`}>&lt; 돌아가기</Link>
-      <EditDashboardName />
+      <EditDashboardName id={id} />
       <EditMember />
       <EditInvitation />
       <Button buttonType='delete-dashboard'>대시보드 삭제하기</Button>

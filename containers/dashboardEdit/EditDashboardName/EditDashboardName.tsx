@@ -1,11 +1,36 @@
 import Button from '@/components/Button';
 import styles from './EditDashboardName.module.scss';
 import classNames from 'classnames';
+import instance from '@/services/axios';
+import { useQuery } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
+import InviteModal from '@/containers/myDashboard/InviteModal';
 
-function EditDashboardName() {
+function EditDashboardName({ id }: { id: string | string[] | undefined }) {
+  const fetchDashboardById = async (id: string | string[] | undefined) => {
+    const response = await instance.get(`/dashboards/${id}`);
+    return response.data;
+  };
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ['dashboard', id],
+    queryFn: () => fetchDashboardById(id),
+    enabled: !!id,
+  });
+
+  console.log(data);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <div className={styles['container']}>
-      <h2 className={styles['section-header-title']}>비브리지</h2>
+      <h2 className={styles['section-header-title']}>{data?.title}</h2>
       <div className={styles['dashboard-edit']}>
         <label>대시보드 이름</label>
         <input className={styles['dashboard-edit-name-input']} type='text' />
