@@ -14,8 +14,8 @@ function DashboardEdit() {
     <div className={styles['container']}>
       <Link href={`dashboard/${id}`}>&lt; 돌아가기</Link>
       <EditDashboardName id={id} />
-      <EditMember />
-      <EditInvitation />
+      <EditMember id={id} />
+      <EditInvitation id={id} />
       <Button buttonType='delete-dashboard'>대시보드 삭제하기</Button>
     </div>
   );

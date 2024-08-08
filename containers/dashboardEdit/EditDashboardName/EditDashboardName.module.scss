@@ -1,53 +1,48 @@
 @use '@/styles/index.scss' as *;
 
 .container {
-  @include Flex(column, null, null);
-  @include ResponsiveWidth(620px, 544px, 284px);
-  @include ResponsivePadding(32px 28px, 32px 28px, 20px 16px);
-  @include border-radius(16px);
-  .section-header-title {
-    @include FontStyle('2xl', 'bold', '2xl', 'xl');
+  @include Flex(column, space-around, flex-start);
+  gap: 16px;
+
+  @include ResponsiveWidth(584px, 584px, 327px);
+  @include ResponsivePadding(32px, 32px, 20px 16px);
+  border-radius: 16px;
+
+  background: $white;
+
+  h2 {
+    padding-bottom: 8px;
+    @include FontStyle('2xl', 700, '2xl', 'xl');
   }
-  .dashboard-edit {
-    @include Flex(column, null, null);
-    margin-top: 24px;
-    label {
-      @include FontStyle('2lg' 'medium', '2lg', 'lg');
-    }
-    .dashboard-edit-name-input {
-      height: 50px;
-      margin-top: 8px;
-      padding: 15px 16px;
-      border: 1px solid $gray-d9;
-      @include border-radius(8px);
-      &:focus {
-        outline: none;
-      }
-    }
-    .dashboard-edit-color {
-      @include Flex(row, null, center);
-      gap: 8px;
-      margin-top: 8px;
-      margin-bottom: 40px;
-      .circle {
-        @include Size(30px);
-        @include border-radius(100%);
-      }
-      .green {
-        background-color: $green;
-      }
-      .purple {
-        background-color: $purple;
-      }
-      .orange {
-        background-color: $orange;
-      }
-      .blue {
-        background-color: $blue;
-      }
-      .pink {
-        background-color: $pink;
-      }
-    }
+}
+
+.label-container {
+  @include Flex(column, space-between, flex-start);
+  gap: 8px;
+
+  p {
+    @include FontStyle('2lg', 500, '2lg', 'lg');
+  }
+
+  input {
+    @include ResponsiveWidth(520px, 520px, 295px);
+    height: 50px;
+    border: 1px solid $gray-d9;
+    border-radius: 8px;
+  }
+}
+
+.color-list {
+  @include Flex(row, space-between, center);
+  gap: 8px;
+
+  width: 182px;
+  @include ResponsivePadding(0 0 16px, 0 0 16px, 0 0 8px);
+
+  li {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
   }
 }
