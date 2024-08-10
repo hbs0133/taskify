@@ -7,21 +7,19 @@ import { useState } from 'react';
 import EmptyColumn from '@/containers/dashboard/id/column/EmptyColumn';
 
 function InvitedDashboard() {
-  const [searchValue, SetSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
 
+  //민경님 pr 머지후 pull하면 무한스크롤로 변경 !
   const { isLoading, error, data } = useQuery({
-    queryKey: ['invitations', 1],
+    queryKey: ['invitations', searchValue],
     queryFn: async () => {
-      const response = await instance.get('/invitations?size=1');
+      //이부분 검색어가 없을시 empty컴포넌트 나오는 이슈 팀미팅해야겠다...
+      const response = await instance.get(`/invitations`);
       return response.data.invitations;
     },
   });
+  //?title=${searchValue}
 
-  const searchData = data
-    ? data.filter((item: IInvitation) =>
-        item.dashboard.title.toLowerCase().includes(searchValue.toLowerCase()),
-      )
-    : [];
   return (
     <div className={styles['container']}>
       <h2 className={styles['title']}>초대받은 대시보드</h2>
@@ -32,7 +30,7 @@ function InvitedDashboard() {
             <input
               type='text'
               value={searchValue}
-              onChange={(e) => SetSearchValue(e.target.value)}
+              onChange={(e) => setSearchValue(e.target.value)}
               placeholder='검색'
             />
           </div>
@@ -51,7 +49,7 @@ function InvitedDashboard() {
               </div>
             </div>
             <div className={styles['invite-list-table-body']}>
-              {searchData.map((item: IInvitation) => (
+              {data.map((item: IInvitation) => (
                 <InviteListItem key={item.id} item={item} />
               ))}
             </div>

@@ -51,7 +51,6 @@ function DashboardList() {
     }
   }, [data]);
 
-  console.log(data);
   return (
     <div className={styles['container']}>
       <div className={styles['dash-board-list']}>

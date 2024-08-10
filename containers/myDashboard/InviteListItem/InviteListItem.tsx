@@ -1,13 +1,26 @@
 import styles from './InviteListItem.module.scss';
 import Button from '@/components/Button';
 import ButtonSet from '@/components/ButtonSet';
-import axios, { AxiosResponse } from 'axios';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import instance from '@/services/axios';
 
 function InviteListItem({ item }: { item: IInvitation }) {
-  const mutation = useMutation<AxiosResponse<any>, Error, boolean>({
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
     mutationFn: (inviteAccepted: boolean) => {
-      return axios.put(`invitations/${item.dashboard.id}`, { inviteAccepted });
+      return instance.put(`/invitations/${item.id}`, { inviteAccepted });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['invitations'],
+      });
+
+      queryClient.invalidateQueries({
+        queryKey: ['dashboards'],
+      });
+    },
+    onError: (error) => {
+      console.error('Error updating invitation:', error);
     },
   });
 

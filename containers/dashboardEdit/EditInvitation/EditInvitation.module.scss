@@ -11,6 +11,14 @@
     .section-header-title {
       @include FontStyle('2xl', 'bold', '2xl', 'xl');
     }
+    .section-header-actions {
+      @include Flex(row, null, center);
+      @include ResponsiveGap(16, 16, 12);
+      .pagination {
+        @include Flex(row, null, center);
+        @include ResponsiveGap(16, 16, 12);
+      }
+    }
   }
   .invitation-list {
     @include Flex(column, null, null);

@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from '@/services/axios';
 
 // 현재 대시보드 id를 받아옴
-function InviteModal(id: any) {
+function InviteModal({ id }: { id: string | string[] | undefined }) {
   const { isModalOpen, setCloseModal } = useCreateModalStore();
   const queryClient = useQueryClient();
 
@@ -14,7 +14,7 @@ function InviteModal(id: any) {
     mutationFn: (newEmail: string) =>
       axios.post(`/dashboards/${id}/invitations`, { email: newEmail }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['getColumnList', id] });
+      queryClient.invalidateQueries({ queryKey: ['invitations'] });
       setCloseModal();
     },
   });
@@ -23,8 +23,8 @@ function InviteModal(id: any) {
     setCloseModal();
   };
 
-  const handleCreateBtnClick = (data: { title: string }) => {
-    postInviteMutation.mutate(data.title);
+  const handleCreateBtnClick = (data: { email: string }) => {
+    postInviteMutation.mutate(data.email);
   };
 
   if (!isModalOpen) return null;

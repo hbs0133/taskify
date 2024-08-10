@@ -29,6 +29,10 @@
     height: 50px;
     border: 1px solid $gray-d9;
     border-radius: 8px;
+    padding-left: 16px;
+    &:focus {
+      outline: none;
+    }
   }
 }
 

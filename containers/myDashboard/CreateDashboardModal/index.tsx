@@ -7,8 +7,10 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from '@/services/axios';
 import ColorCircleList from '@/components/ColorCircleList';
 import ModalPortal from '@/components/ModalPortal';
+import { useRouter } from 'next/router';
 
 export default function CreateDashboardModal() {
+  const router = useRouter();
   const { isModalOpen, setCloseModal } = useCreateModalStore();
   const queryClient = useQueryClient();
 
@@ -55,7 +57,12 @@ export default function CreateDashboardModal() {
           <Button buttonType='secondary' onClick={handleCancelBtnClick}>
             취소
           </Button>
-          <Button buttonType='primary' onClick={handleCreateBtnClick}>
+          <Button
+            //이부분 disabled 스타일 처리 도용님께 여쭤보고 버튼 색상 바꾸는 :disabled  css 추가하면 좋을꺼 같다! 현재는 사용자가 알지 못한다!
+            disabled={!title}
+            buttonType='primary'
+            onClick={handleCreateBtnClick}
+          >
             생성
           </Button>
         </ButtonSet>

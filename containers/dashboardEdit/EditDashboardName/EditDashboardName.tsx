@@ -1,13 +1,11 @@
 import Button from '@/components/Button';
 import styles from './EditDashboardName.module.scss';
-import classNames from 'classnames';
 import instance from '@/services/axios';
 import { useQuery } from '@tanstack/react-query';
 import ColorCircleList from '@/components/ColorCircleList';
 import { useState } from 'react';
 import ButtonSet from '@/components/ButtonSet';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from '@/services/axios';
 
 function EditDashboardName({ id }: { id: string | string[] | undefined }) {
   const queryClient = useQueryClient();
@@ -27,7 +25,7 @@ function EditDashboardName({ id }: { id: string | string[] | undefined }) {
   });
 
   const putDashboardMutation = useMutation({
-    mutationFn: () => axios.put(`/dashboards/${id}`, { title, color }),
+    mutationFn: () => instance.put(`/dashboards/${id}`, { title, color }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['dashboard'] });
     },
