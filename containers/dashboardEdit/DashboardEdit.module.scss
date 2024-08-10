@@ -4,4 +4,21 @@
   @include Flex(column, null, null);
   gap: 16px;
   @include ResponsivePadding(20px, 20px, 12px);
+  background-color: $gray-fa;
+  .link {
+    @include Flex(row, null, center);
+    gap: 3px;
+    svg {
+      transform: translateY(2px);
+      rotate: 180deg;
+    }
+  }
+  .delete-button-wrapper {
+    button {
+      @include ResponsiveWidth(620px, 544px, 284px);
+      background-color: $main-yellow;
+      color: white;
+      border: none;
+    }
+  }
 }

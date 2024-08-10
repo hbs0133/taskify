@@ -1,4 +1,5 @@
 import IconAddBox from './icons/ic_add_box.svg';
+import IconAddBoxWhite from './icons/ic_add_box_white.svg';
 import IconArrowDown from './icons/ic_arrow_down.svg';
 import IconArrowForward from './icons/ic_arrow_forward.svg';
 import IconCalender from './icons/ic_calender.svg';
@@ -29,6 +30,7 @@ import IconChecked from './icons/ic_checked.svg';
 
 export {
   IconAddBox,
+  IconAddBoxWhite,
   IconArrowDown,
   IconArrowForward,
   IconCalender,

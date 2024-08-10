@@ -53,17 +53,19 @@ function EditDashboardName({ id }: { id: string | string[] | undefined }) {
 
   return (
     <section className={`${styles['container']}`}>
-      <h2>새로운 대시보드</h2>
+      <h2>{data?.title}</h2>
       <label className={`${styles['label-container']}`}>
-        <p>{data?.title}</p>
+        <p>대시보드 이름</p>
         <input type='text' onChange={handleOnTitleChange} />
       </label>
       <ColorCircleList onClick={handleOnColorClick} />
-      <ButtonSet buttonSetType='primary' widthFill={true}>
-        <Button buttonType='primary' onClick={handlePutBtnClick}>
-          변경
-        </Button>
-      </ButtonSet>
+      <Button
+        disabled={!title}
+        buttonType='modal-primary'
+        onClick={handlePutBtnClick}
+      >
+        변경
+      </Button>
     </section>
   );
 }

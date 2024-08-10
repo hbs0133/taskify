@@ -7,18 +7,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 13px;
-  }
-  .pagination {
-    @include Flex(row, null, center);
-    gap: 16px;
-    width: 168px;
-    margin-top: 12px;
-    margin-left: auto;
-    @include FontStyle(14, 400);
-    color: $black-33;
-    .pagination-number {
-      white-space: nowrap;
-    }
+    margin-bottom: 12px;
   }
 }
 

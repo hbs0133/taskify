@@ -4,10 +4,9 @@ import { useInviteModalStore } from '@/stores/modalStore';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from '@/services/axios';
 
-
 // 현재 대시보드 id를 받아옴
 
-function InviteModal(id: any) {
+function InviteModal({ id }: any) {
   const { isModalOpen, setCloseModal } = useInviteModalStore();
   const queryClient = useQueryClient();
 

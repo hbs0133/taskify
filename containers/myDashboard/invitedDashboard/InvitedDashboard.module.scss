@@ -7,7 +7,6 @@
   padding: 32px 0;
   @include border-radius(8px);
   background-color: $white;
-
   .title {
     padding-left: 28px;
     @include FontStyle(24, 700);
@@ -47,7 +46,6 @@
     margin-top: 4px;
     @include Flex(column, center, null);
     gap: 20px;
-
     .invite-list-table-header {
       margin-left: 76px;
       @include Flex(row, space-between, center);
@@ -65,21 +63,9 @@
     .invite-list-table-body {
       @include Flex(column, null, null);
       gap: 20px;
-    }
-  }
-
-  .empty-invitation-wrapper {
-    height: 309px;
-    @include Flex(row, center, center);
-
-    .empty-invitation {
-      @include Flex(column, center, center);
-      gap: 24px;
-
-      p {
-        @include FontStyle(18, 400);
-        color: $gray-9f;
-      }
+      // overflow-y: auto;
+      // overflow-x: hidden;
+      // overscroll-behavior: none;
     }
   }
 }

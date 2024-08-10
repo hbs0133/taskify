@@ -3,5 +3,6 @@
 .container {
   @include Flex(column, null, null);
   @include ResponsiveGap(40, 48, 24);
-  @include ResponsivePadding(40px, 40px, 24px);
+  @include ResponsivePadding(0 40px, 0 40px, 0 24px);
+  background-color: $gray-fa;
 }

@@ -1,39 +1,46 @@
 import InviteListItem from '../InviteListItem/InviteListItem';
 import styles from './InvitedDashboard.module.scss';
-import { IconEmptyInvitation, IconSearch } from '@/assets/icongroup';
-import { useQuery } from '@tanstack/react-query';
-import instance from '@/services/axios';
-import { useState } from 'react';
+import { IconSearch } from '@/assets/icongroup';
+import { useState, useEffect } from 'react';
 import EmptyColumn from '@/containers/dashboard/id/column/EmptyColumn';
+import useInfiniteScroll from '@/hooks/useInfiniteScroll';
+import { useInView } from 'react-intersection-observer';
 
 function InvitedDashboard() {
   const [searchValue, setSearchValue] = useState('');
+  const { ref, inView } = useInView();
 
-  //민경님 pr 머지후 pull하면 무한스크롤로 변경 !
-  const { isLoading, error, data } = useQuery({
-    queryKey: ['invitations', searchValue],
-    queryFn: async () => {
-      //이부분 검색어가 없을시 empty컴포넌트 나오는 이슈 팀미팅해야겠다...
-      const response = await instance.get(`/invitations`);
-      return response.data.invitations;
-    },
-  });
+  const {
+    data,
+    totalCount,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    error,
+  } = useInfiniteScroll('invitation', ['invitations']);
   //?title=${searchValue}
+
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, fetchNextPage]);
 
   return (
     <div className={styles['container']}>
       <h2 className={styles['title']}>초대받은 대시보드</h2>
+      <div className={styles['search-wrapper']}>
+        <IconSearch />
+        <input
+          type='text'
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder='검색'
+        />
+      </div>
       {data && data.length > 0 ? (
         <>
-          <div className={styles['search-wrapper']}>
-            <IconSearch />
-            <input
-              type='text'
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              placeholder='검색'
-            />
-          </div>
           <div className={styles['invite-list-table']}>
             <div className={styles['invite-list-table-header']}>
               <div className={styles['invite-list-table-header-name']}>
@@ -53,6 +60,7 @@ function InvitedDashboard() {
                 <InviteListItem key={item.id} item={item} />
               ))}
             </div>
+            <div ref={ref}></div>
           </div>
         </>
       ) : (
@@ -61,5 +69,4 @@ function InvitedDashboard() {
     </div>
   );
 }
-
 export default InvitedDashboard;

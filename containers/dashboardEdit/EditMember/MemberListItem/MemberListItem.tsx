@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Button from '@/components/Button';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import instance from '@/services/axios';
+import { ProfileIcon } from '@/components/ProfileIcon/ProfileIcon';
 
 //타입정리 필요
 function MemberListItem({ item }: { item: any }) {
@@ -25,16 +26,7 @@ function MemberListItem({ item }: { item: any }) {
   return (
     <div className={styles['container']}>
       <div className={styles['member-info']}>
-        {item.profileUrl ? (
-          <Image
-            src={item.profileUrl}
-            width={38}
-            height={38}
-            className={styles['member-profile-image']}
-            alt='프로필 이미지'
-          />
-        ) : null}
-
+        <ProfileIcon nickname={item.nickname} imageUrl={item.imageUrl} />
         <span className={styles['member-name']}>{item?.nickname}</span>
       </div>
       <Button onClick={handleDeleteClick} buttonType='delete'>

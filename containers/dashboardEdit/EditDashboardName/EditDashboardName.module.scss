@@ -3,13 +3,10 @@
 .container {
   @include Flex(column, space-around, flex-start);
   gap: 16px;
-
-  @include ResponsiveWidth(584px, 584px, 327px);
+  @include ResponsiveWidth(620px, 544px, 284px);
   @include ResponsivePadding(32px, 32px, 20px 16px);
   border-radius: 16px;
-
   background: $white;
-
   h2 {
     padding-bottom: 8px;
     @include FontStyle('2xl', 700, '2xl', 'xl');
@@ -25,7 +22,7 @@
   }
 
   input {
-    @include ResponsiveWidth(520px, 520px, 295px);
+    @include ResponsiveWidth(564px, 488px, 252px);
     height: 50px;
     border: 1px solid $gray-d9;
     border-radius: 8px;

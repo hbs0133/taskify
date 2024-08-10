@@ -57,15 +57,15 @@ export default function CreateDashboardModal() {
           <Button buttonType='modal-secondary' onClick={handleCancelBtnClick}>
             취소
           </Button>
-          
+
           <Button
             //이부분 disabled 스타일 처리 도용님께 여쭤보고 버튼 색상 바꾸는 :disabled  css 추가하면 좋을꺼 같다! 현재는 사용자가 알지 못한다!
             disabled={!title}
             buttonType='modal-primary'
             onClick={handleCreateBtnClick}
           >
-// 도용님께서 버튼 추가하신 거 바탕으로 수정해서 충돌 해결해놓았습니다! //
-            생성
+            // 도용님께서 버튼 추가하신 거 바탕으로 수정해서 충돌
+            해결해놓았습니다! // 생성
           </Button>
         </ButtonSet>
       </section>

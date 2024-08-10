@@ -3,8 +3,9 @@
 .container {
   @include Flex(column, null, null);
   @include ResponsiveWidth(620px, 544px, 284px);
-  padding-top: 26px;
+  padding: 26px 0;
   @include border-radius(16px);
+  background: $white;
   .section-header {
     @include Flex(row, space-between, center);
     @include ResponsivePadding(0 28px, 0 28px, 0 20px);
@@ -14,9 +15,19 @@
     .section-header-actions {
       @include Flex(row, null, center);
       @include ResponsiveGap(16, 16, 12);
-      .pagination {
-        @include Flex(row, null, center);
-        @include ResponsiveGap(16, 16, 12);
+      .dashboard-manage-button {
+        padding: 7px 16px;
+        border-radius: 8px;
+        background: $main-yellow;
+        outline: none;
+        > div {
+          @include Flex(row, space-between, center);
+          gap: 8px;
+          height: 26px;
+          @include FontStyle('lg', 500, 'lg', 'lg');
+          font-family: pretendard;
+          color: $white;
+        }
       }
     }
   }

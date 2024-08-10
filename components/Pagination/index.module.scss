@@ -1,0 +1,14 @@
+@use '@/styles/index.scss' as *;
+
+.pagination {
+  @include Flex(row, null, center);
+  gap: 16px;
+  width: 168px;
+  margin-left: auto;
+  @include FontStyle(14, 400);
+  color: $black-33;
+  .pagination-number {
+    width: 72px;
+    white-space: nowrap;
+  }
+}

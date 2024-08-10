@@ -2,15 +2,17 @@ import styles from './EditInvitation.module.scss';
 import instance from '@/services/axios';
 import { useQuery } from '@tanstack/react-query';
 import InvitationListItem from './InvitationListItem/InvitationListItem';
-import { useCreateModalStore } from '@/stores/modalStore';
+import { useInviteModalStore } from '@/stores/modalStore';
 import InviteModal from '@/containers/myDashboard/InviteModal';
-import ButtonSetForPagination from '@/components/ButtonSetForPagination/Button';
 import { useState, useEffect } from 'react';
+import { IconAddBoxWhite } from '@/assets/icongroup';
+import { usePagination } from '@/hooks/usePagination';
+import Pagination from '@/components/Pagination';
 
 function EditInvitation({ id }: { id: string | string[] | undefined }) {
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
-  const { isModalOpen, setOpenModal } = useCreateModalStore();
+
+  const { isModalOpen, setOpenModal } = useInviteModalStore();
   const fetchDashboardInvitations = async (
     id: string | string[] | undefined,
   ) => {
@@ -26,25 +28,12 @@ function EditInvitation({ id }: { id: string | string[] | undefined }) {
     enabled: !!id,
   });
 
-  const handleNextPage = () => {
-    if (data && data.members.length > 0 && page < totalPage) {
-      setPage((prevPage) => prevPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (page > 1) {
-      setPage((prevPage) => prevPage - 1);
-    }
-  };
-
-  useEffect(() => {
-    if (data) {
-      const totalCount = data.totalCount;
-      const pageSize = 5;
-      setTotalPage(Math.ceil(totalCount / pageSize));
-    }
-  }, [data]);
+  const { totalPage, handleNextPage, handlePreviousPage } = usePagination(
+    data,
+    page,
+    setPage,
+    'invitations',
+  );
 
   return (
     <div>
@@ -52,18 +41,24 @@ function EditInvitation({ id }: { id: string | string[] | undefined }) {
         <div className={styles['section-header']}>
           <h2 className={styles['section-header-title']}>초대내역</h2>
           <div className={styles['section-header-actions']}>
-            <div className={styles['pagination']}>
+            <Pagination
+              page={page}
+              totalPage={totalPage}
+              onNext={handleNextPage}
+              onPrev={handlePreviousPage}
+            />
+            <button
+              className={`${styles['dashboard-manage-button']}`}
+              onClick={setOpenModal}
+            >
               <div>
-                {' '}
-                <span>{totalPage} </span>페이지 중 <span> {page}</span>
+                <IconAddBoxWhite
+                  style={{ width: '20px', height: '20px' }}
+                  aria-label={`add box icon`}
+                ></IconAddBoxWhite>
+                초대하기
               </div>
-              <ButtonSetForPagination
-                size='large'
-                onClickToNext={handleNextPage}
-                onClickToPrev={handlePreviousPage}
-              ></ButtonSetForPagination>
-            </div>
-            <button onClick={setOpenModal}>초대하기</button>
+            </button>
           </div>
         </div>
         <div className={styles['invitation-list']}>

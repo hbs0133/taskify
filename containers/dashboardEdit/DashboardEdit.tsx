@@ -7,6 +7,8 @@ import Button from '@/components/Button';
 import { useRouter } from 'next/router';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import instance from '@/services/axios';
+import DashboardLayout from '../dashboardLayout';
+import { IconArrowForward } from '@/assets/icongroup';
 
 function DashboardEdit() {
   const router = useRouter();
@@ -31,15 +33,22 @@ function DashboardEdit() {
   };
 
   return (
-    <div className={styles['container']}>
-      <Link href={`/dashboard/${id}`}>&lt;돌아가기</Link>
-      <EditDashboardName id={id} />
-      <EditMember id={id} />
-      <EditInvitation id={id} />
-      <Button onClick={handleDeleteClick} buttonType='delete-dashboard'>
-        대시보드 삭제하기
-      </Button>
-    </div>
+    <DashboardLayout>
+      <div className={styles['container']}>
+        <Link href={`/dashboard/${id}`} className={styles['link']}>
+          <IconArrowForward />
+          돌아가기
+        </Link>
+        <EditDashboardName id={id} />
+        <EditMember id={id} />
+        <EditInvitation id={id} />
+        <div className={styles['delete-button-wrapper']}>
+          <Button onClick={handleDeleteClick} buttonType='delete-dashboard'>
+            대시보드 삭제하기
+          </Button>
+        </div>
+      </div>
+    </DashboardLayout>
   );
 }
 
