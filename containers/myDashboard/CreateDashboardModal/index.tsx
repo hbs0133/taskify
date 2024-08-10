@@ -64,8 +64,7 @@ export default function CreateDashboardModal() {
             buttonType='modal-primary'
             onClick={handleCreateBtnClick}
           >
-            // 도용님께서 버튼 추가하신 거 바탕으로 수정해서 충돌
-            해결해놓았습니다! // 생성
+            생성
           </Button>
         </ButtonSet>
       </section>
