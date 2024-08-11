@@ -18,7 +18,7 @@ const infiniteFetchDateList = async ({
 }: {
   type: 'card' | 'invitation';
   pageParam?: number | null;
-  queryKey: [string, number] | [string];
+  queryKey: [string, number] | [string, string];
   title?: string;
 }) => {
   const SIZE = 5;
@@ -41,12 +41,17 @@ const infiniteFetchDateList = async ({
       //     totalCount: res.data.totalCount,
       //   };
     } else if (type === 'invitation') {
+      const params: IParam = {
+        size: SIZE,
+        cursorId,
+      };
+
+      if (title !== '') {
+        params.title = title;
+      }
+
       const res = await axios.get(`/invitations`, {
-        params: {
-          size: SIZE,
-          cursorId,
-          title,
-        },
+        params,
       });
       return res.data;
     }
@@ -66,7 +71,7 @@ const infiniteFetchDateList = async ({
  */
 function useInfiniteScroll(
   type: 'card' | 'invitation',
-  pageQueryKey: [string, number] | [string],
+  pageQueryKey: [string, number] | [string, string],
   title?: string,
 ) {
   const {
