@@ -7,7 +7,7 @@ export const usePagination = (
   dataKey: string,
   pageSize: number = 5,
 ) => {
-  const [totalPage, setTotalPage] = useState(0);
+  const [totalPage, setTotalPage] = useState(1);
 
   useEffect(() => {
     if (data) {

@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { IconAddBoxWhite } from '@/assets/icongroup';
 import { usePagination } from '@/hooks/usePagination';
 import Pagination from '@/components/Pagination';
+import EmptyColumn from '@/containers/dashboard/id/column/EmptyColumn';
 
 function EditInvitation({ id }: { id: string | string[] | undefined }) {
   const [page, setPage] = useState(1);
@@ -34,6 +35,7 @@ function EditInvitation({ id }: { id: string | string[] | undefined }) {
     setPage,
     'invitations',
   );
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <div>
@@ -63,12 +65,15 @@ function EditInvitation({ id }: { id: string | string[] | undefined }) {
         </div>
         <div className={styles['invitation-list']}>
           <p className={styles['invitation-list-header-title']}>이메일</p>
-          {
-            //타입정리 필요
-            data?.invitations.map((item: any) => (
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : data && data.invitations && data.invitations.length > 0 ? (
+            data.invitations.map((item: any) => (
               <InvitationListItem key={item.id} id={id} item={item} />
             ))
-          }
+          ) : (
+            <EmptyColumn />
+          )}
         </div>
       </div>
       {isModalOpen && <InviteModal id={id} />}

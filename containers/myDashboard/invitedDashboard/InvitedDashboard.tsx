@@ -19,13 +19,14 @@ function InvitedDashboard() {
     isLoading,
     error,
   } = useInfiniteScroll('invitation', ['invitations']);
-  //?title=${searchValue}
 
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
     }
   }, [inView, hasNextPage, fetchNextPage]);
+
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <div className={styles['container']}>

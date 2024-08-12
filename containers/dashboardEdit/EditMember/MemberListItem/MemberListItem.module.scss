@@ -18,4 +18,11 @@
   &:last-child {
     border-bottom: none;
   }
+  button {
+    border: 1px solid $main-yellow;
+    &:hover {
+      color: $main-yellow-active;
+      border: 1px solid $main-yellow-active;
+    }
+  }
 }

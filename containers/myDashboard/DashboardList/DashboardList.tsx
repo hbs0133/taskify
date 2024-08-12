@@ -38,6 +38,8 @@ function DashboardList() {
     'dashboards',
   );
 
+  if (isLoading) return <p>Loading...</p>;
+
   return (
     <div className={styles['container']}>
       <div className={styles['dash-board-list']}>

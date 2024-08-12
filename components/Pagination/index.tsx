@@ -10,7 +10,7 @@ interface PaginationProps {
 
 function Pagination({ page, totalPage, onNext, onPrev }: PaginationProps) {
   const paginationStyle = {
-    display: totalPage < 2 ? 'none' : '',
+    display: totalPage < 2 || isNaN(totalPage) ? 'none' : '',
   };
   return (
     <div className={styles['pagination']} style={paginationStyle}>

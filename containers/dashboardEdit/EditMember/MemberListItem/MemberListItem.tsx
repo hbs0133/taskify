@@ -29,9 +29,11 @@ function MemberListItem({ item }: { item: any }) {
         <ProfileIcon nickname={item.nickname} imageUrl={item.imageUrl} />
         <span className={styles['member-name']}>{item?.nickname}</span>
       </div>
-      <Button onClick={handleDeleteClick} buttonType='delete'>
-        삭제
-      </Button>
+      {!item.isOwner && (
+        <Button onClick={handleDeleteClick} buttonType='delete'>
+          삭제
+        </Button>
+      )}
     </div>
   );
 }

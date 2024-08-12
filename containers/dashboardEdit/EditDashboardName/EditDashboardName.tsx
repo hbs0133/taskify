@@ -64,7 +64,7 @@ function EditDashboardName({ id }: { id: string | string[] | undefined }) {
         buttonType='modal-primary'
         onClick={handlePutBtnClick}
       >
-        변경
+        변 경
       </Button>
     </section>
   );

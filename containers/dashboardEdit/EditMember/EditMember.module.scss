@@ -2,7 +2,7 @@
 
 .container {
   @include Flex(column, null, null);
-  @include ResponsiveWidth(620px, 544px, 284px);
+  @include ResponsiveWidth(700px, 544px, 284px);
   padding-top: 26px;
   @include border-radius(16px);
   background: $white;

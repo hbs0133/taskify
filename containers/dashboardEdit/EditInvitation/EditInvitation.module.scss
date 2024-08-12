@@ -2,7 +2,7 @@
 
 .container {
   @include Flex(column, null, null);
-  @include ResponsiveWidth(620px, 544px, 284px);
+  @include ResponsiveWidth(700px, 544px, 284px);
   padding: 26px 0;
   @include border-radius(16px);
   background: $white;
@@ -20,7 +20,11 @@
         border-radius: 8px;
         background: $main-yellow;
         outline: none;
-        > div {
+        transition: 0.3s;
+        &:hover {
+          background-color: $main-yellow-active;
+        }
+        div {
           @include Flex(row, space-between, center);
           gap: 8px;
           height: 26px;
