@@ -1,6 +1,6 @@
 import FixedMenu from '@/components/FixedMenu';
 import DashboardList from './DashboardList/DashboardList';
-import InvitedDashboard from './InvitedDashboard/InvitedDashboard';
+import InvitedDashboard from './invitedDashboard/InvitedDashboard';
 import styles from './MyDashboard.module.scss';
 import DashboardLayout from '../dashboardLayout';
 import { useTheme } from '@/hooks/useThemeContext';
