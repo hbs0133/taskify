@@ -11,12 +11,6 @@
     padding-bottom: 8px;
     @include FontStyle('2xl', 700, '2xl', 'xl');
   }
-  button {
-    transition: 0.3s;
-    &:hover {
-      background-color: $main-yellow-active;
-    }
-  }
 }
 
 .label-container {

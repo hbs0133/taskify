@@ -21,6 +21,11 @@
   .invite-list-header-title {
     display: none;
   }
+  &.dark {
+    padding-top: 20px;
+    color: rgba($white, 0.87);
+    border-bottom: 1px solid $dark-card-top;
+  }
 }
 
 @include tablet {

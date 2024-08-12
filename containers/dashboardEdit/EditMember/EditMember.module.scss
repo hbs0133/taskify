@@ -23,4 +23,17 @@
       color: $gray-9f;
     }
   }
+  &.dark {
+    background-color: $dark-card;
+    .section-header {
+      .section-header-title {
+        color: rgba($white, 0.87);
+      }
+    }
+    .member-list {
+      .member-list-header-title {
+        color: rgba($white, 0.6);
+      }
+    }
+  }
 }

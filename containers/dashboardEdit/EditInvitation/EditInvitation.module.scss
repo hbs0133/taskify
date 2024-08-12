@@ -3,7 +3,7 @@
 .container {
   @include Flex(column, null, null);
   @include ResponsiveWidth(700px, 544px, 284px);
-  padding: 26px 0;
+  padding: 26px 0 10px 0;
   @include border-radius(16px);
   background: $white;
   .section-header {
@@ -43,6 +43,19 @@
       @include ResponsivePadding(0 28px, 0 28px, 0 20px);
       @include FontStyle('lg', 'regular', 'lg', 'md');
       color: $gray-9f;
+    }
+  }
+  &.dark {
+    background-color: $dark-card;
+    .section-header {
+      .section-header-title {
+        color: rgba($white, 0.87);
+      }
+    }
+    .invitation-list {
+      .invitation-list-header-title {
+        color: rgba($white, 0.6);
+      }
     }
   }
 }

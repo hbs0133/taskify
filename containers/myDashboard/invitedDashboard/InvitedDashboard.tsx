@@ -5,10 +5,13 @@ import { useState, useEffect } from 'react';
 import EmptyColumn from '@/containers/dashboard/id/column/EmptyColumn';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import { useInView } from 'react-intersection-observer';
+import { useTheme } from '@/hooks/useThemeContext';
 
 function InvitedDashboard() {
   const [searchValue, setSearchValue] = useState('');
   const { ref, inView } = useInView();
+  const { theme } = useTheme();
+  const themeStyle = styles[`${theme}`];
 
   const {
     data,
@@ -24,18 +27,14 @@ function InvitedDashboard() {
     searchValue,
   );
 
-  //?title=${searchValue}
-
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
-  if (isLoading) return <p>Loading...</p>;
-
   return (
-    <div className={styles['container']}>
+    <div className={`${styles['container']} ${themeStyle}`}>
       <h2 className={styles['title']}>초대받은 대시보드</h2>
       <div className={styles['search-wrapper']}>
         <IconSearch />
@@ -46,38 +45,42 @@ function InvitedDashboard() {
           placeholder='검색'
         />
       </div>
-      {data && data.length > 0 ? (
-        <>
-          <div className={styles['invite-list-table']}>
-            <div className={styles['invite-list-table-header']}>
-              <div className={styles['invite-list-table-header-name']}>
-                이름
-              </div>
-              <div className={styles['invite-list-table-header-inviter']}>
-                초대자
-              </div>
-              <div
-                className={styles['invite-list-table-header-invite-accepted']}
-              >
-                수락 여부
-              </div>
-            </div>
-            <div className={styles['invite-list-table-body']}>
-              {data.map((item: IInvitation) => (
-                <InviteListItem key={item.id} item={item} />
-              ))}
-              {hasNextPage && (
-                <div ref={ref} className={styles['ref']}>
-                  .
-                </div>
-              )}
-            </div>
-          </div>
-        </>
+      {isLoading ? (
+        <div className={styles['loading']}>loading...</div>
       ) : (
-        <div className={styles['empty-wrapper']}>
-          <EmptyColumn />
-        </div>
+        <>
+          {data && data.length > 0 ? (
+            <div className={styles['invite-list-table']}>
+              <div className={styles['invite-list-table-header']}>
+                <div className={styles['invite-list-table-header-name']}>
+                  이름
+                </div>
+                <div className={styles['invite-list-table-header-inviter']}>
+                  초대자
+                </div>
+                <div
+                  className={styles['invite-list-table-header-invite-accepted']}
+                >
+                  수락 여부
+                </div>
+              </div>
+              <div className={styles['invite-list-table-body']}>
+                {data.map((item: IInvitation) => (
+                  <InviteListItem key={item.id} item={item} />
+                ))}
+                {hasNextPage && (
+                  <div ref={ref} className={styles['ref']}>
+                    .
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className={styles['empty-wrapper']}>
+              <EmptyColumn />
+            </div>
+          )}
+        </>
       )}
     </div>
   );

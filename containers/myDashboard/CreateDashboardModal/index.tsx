@@ -8,11 +8,13 @@ import axios from '@/services/axios';
 import ColorCircleList from '@/components/ColorCircleList';
 import ModalPortal from '@/components/ModalPortal';
 import { useRouter } from 'next/router';
+import useToast from '@/hooks/useToast';
 
 export default function CreateDashboardModal() {
   const router = useRouter();
   const { isModalOpen, setCloseModal } = useCreateDashboardModalStore();
   const queryClient = useQueryClient();
+  const { toast } = useToast();
 
   const [title, setTitle] = useState<string | null>('');
   const [color, setColor] = useState<string | null>('#7AC555');
@@ -34,7 +36,11 @@ export default function CreateDashboardModal() {
     mutationFn: () => axios.post(`/dashboards`, { title, color }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['dashboard'] });
+      toast('success', '대시보드가 성공적으로 생성 되었습니다.');
       setCloseModal();
+    },
+    onError: (error) => {
+      toast('error', '대시보드 생성에 실패했습니다.');
     },
   });
 
@@ -59,7 +65,6 @@ export default function CreateDashboardModal() {
           </Button>
 
           <Button
-            //이부분 disabled 스타일 처리 도용님께 여쭤보고 버튼 색상 바꾸는 :disabled  css 추가하면 좋을꺼 같다! 현재는 사용자가 알지 못한다!
             disabled={!title}
             buttonType='modal-primary'
             onClick={handleCreateBtnClick}

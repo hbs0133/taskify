@@ -9,9 +9,12 @@ import { IconAddBoxWhite } from '@/assets/icongroup';
 import { usePagination } from '@/hooks/usePagination';
 import Pagination from '@/components/Pagination';
 import EmptyColumn from '@/containers/dashboard/id/column/EmptyColumn';
+import { useTheme } from '@/hooks/useThemeContext';
 
 function EditInvitation({ id }: { id: string | string[] | undefined }) {
   const [page, setPage] = useState(1);
+  const { theme } = useTheme();
+  const themeStyle = styles[`${theme}`];
 
   const { isModalOpen, setOpenModal } = useInviteModalStore();
   const fetchDashboardInvitations = async (
@@ -39,7 +42,7 @@ function EditInvitation({ id }: { id: string | string[] | undefined }) {
 
   return (
     <div>
-      <div className={styles['container']}>
+      <div className={`${styles['container']} ${themeStyle}`}>
         <div className={styles['section-header']}>
           <h2 className={styles['section-header-title']}>초대내역</h2>
           <div className={styles['section-header-actions']}>

@@ -9,21 +9,27 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import instance from '@/services/axios';
 import DashboardLayout from '../dashboardLayout';
 import { IconArrowForward } from '@/assets/icongroup';
+import useToast from '@/hooks/useToast';
+import { useTheme } from '@/hooks/useThemeContext';
 
 function DashboardEdit() {
   const router = useRouter();
   const { id } = router.query;
-
+  const { toast } = useToast();
   const queryClient = useQueryClient();
+  const { theme } = useTheme();
+  const themeStyle = styles[`${theme}`];
+
   const deleteDashboardMutation = useMutation({
     mutationFn: () => instance.delete(`/dashboards/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['dashboards'],
+        queryKey: ['dashboard'],
       });
+      toast('success', '대시보드를 성공적으로 삭제했습니다.');
     },
-    onError: (error) => {
-      console.error('Error deleting invitation:', error);
+    onError: (err) => {
+      toast('error', `${err.response.data.message}`);
     },
   });
 
@@ -34,7 +40,7 @@ function DashboardEdit() {
 
   return (
     <DashboardLayout>
-      <div className={styles['container']}>
+      <div className={`${styles['container']} ${themeStyle}`}>
         <Link href={`/dashboard/${id}`} className={styles['link']}>
           <IconArrowForward />
           돌아가기

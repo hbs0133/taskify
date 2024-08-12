@@ -16,6 +16,10 @@
     padding-bottom: 8px;
     @include FontStyle('2xl', 700, '2xl', 'xl');
   }
+  button:disabled {
+    cursor: not-allowed;
+    background-color: $gray-d9;
+  }
 }
 
 .label-container {

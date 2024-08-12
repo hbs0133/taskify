@@ -11,4 +11,9 @@
     width: 72px;
     white-space: nowrap;
   }
+  &.dark {
+    .pagination-number {
+      color: rgba($white, 0.6);
+    }
+  }
 }

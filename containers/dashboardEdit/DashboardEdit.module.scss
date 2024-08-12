@@ -14,17 +14,10 @@
       rotate: 180deg;
     }
   }
-  .delete-button-wrapper {
-    button {
-      @include ResponsiveWidth(700px, 544px, 284px);
-      background-color: $white;
-      color: $main-yellow;
-      border: 1px solid $main-yellow;
-      transition: 0.2s;
-      &:hover {
-        color: $main-yellow-active;
-        border: 1px solid $main-yellow-active;
-      }
+  &.dark {
+    background-color: $dark-theme;
+    .link {
+      color: rgba($white, 0.6);
     }
   }
 }

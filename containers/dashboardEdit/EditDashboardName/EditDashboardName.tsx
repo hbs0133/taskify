@@ -4,11 +4,15 @@ import instance from '@/services/axios';
 import { useQuery } from '@tanstack/react-query';
 import ColorCircleList from '@/components/ColorCircleList';
 import { useState } from 'react';
-import ButtonSet from '@/components/ButtonSet';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import useToast from '@/hooks/useToast';
+import { useTheme } from '@/hooks/useThemeContext';
 
 function EditDashboardName({ id }: { id: string | string[] | undefined }) {
   const queryClient = useQueryClient();
+  const { toast } = useToast();
+  const { theme } = useTheme();
+  const themeStyle = styles[`${theme}`];
 
   const [title, setTitle] = useState<string | null>('');
   const [color, setColor] = useState<string | null>('#7AC555');
@@ -28,6 +32,10 @@ function EditDashboardName({ id }: { id: string | string[] | undefined }) {
     mutationFn: () => instance.put(`/dashboards/${id}`, { title, color }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['dashboard'] });
+      toast('success', '대시보드가 성공적으로 수정되었습니다.');
+    },
+    onError: (err) => {
+      toast('error', `${err.response.data.message}`);
     },
   });
 
@@ -52,7 +60,7 @@ function EditDashboardName({ id }: { id: string | string[] | undefined }) {
   }
 
   return (
-    <section className={`${styles['container']}`}>
+    <section className={`${styles['container']} ${themeStyle}`}>
       <h2>{data?.title}</h2>
       <label className={`${styles['label-container']}`}>
         <p>대시보드 이름</p>

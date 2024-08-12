@@ -11,4 +11,9 @@
   &:last-child {
     border-bottom: none;
   }
+  &.dark {
+    .invitation-email {
+      color: rgba($white, 0.87);
+    }
+  }
 }

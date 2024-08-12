@@ -5,9 +5,13 @@ import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { usePagination } from '@/hooks/usePagination';
 import Pagination from '@/components/Pagination';
+import { useTheme } from '@/hooks/useThemeContext';
 
 function EditMember({ id }: { id: string | string[] | undefined }) {
   const [page, setPage] = useState(1);
+  const { theme } = useTheme();
+  const themeStyle = styles[`${theme}`];
+
   const fetchDashboardMember = async (id: string | string[] | undefined) => {
     const response = await instance.get(
       `/members?page=${page}&size=5&dashboardId=${id}`,
@@ -29,7 +33,7 @@ function EditMember({ id }: { id: string | string[] | undefined }) {
   );
 
   return (
-    <div className={styles['container']}>
+    <div className={`${styles['container']} ${themeStyle}`}>
       <div className={styles['section-header']}>
         <h2 className={styles['section-header-title']}>구성원</h2>
         <Pagination

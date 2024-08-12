@@ -7,9 +7,6 @@
   .member-info {
     @include Flex(row, null, center);
     @include ResponsiveGap(12, 12, 8);
-    .member-profile-image {
-      object-fit: cover;
-    }
     .member-name {
       @include FontStyle('lg', 'regular', 'lg', 'md');
       color: $black-33;
@@ -18,11 +15,15 @@
   &:last-child {
     border-bottom: none;
   }
-  button {
-    border: 1px solid $main-yellow;
-    &:hover {
-      color: $main-yellow-active;
-      border: 1px solid $main-yellow-active;
+  &.dark {
+    border-bottom: 1px solid $dark-card-top;
+    &:last-child {
+      border-bottom: none;
+    }
+    .member-info {
+      .member-name {
+        color: rgba($white, 0.87);
+      }
     }
   }
 }

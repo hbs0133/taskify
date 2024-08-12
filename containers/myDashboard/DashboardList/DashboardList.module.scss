@@ -8,13 +8,6 @@
     grid-template-rows: repeat(2, 1fr);
     gap: 13px;
     margin-bottom: 12px;
-    button {
-      transition: 0.3s;
-      &:hover {
-        border: 1px solid $main-yellow;
-        background-color: $white;
-      }
-    }
   }
 }
 

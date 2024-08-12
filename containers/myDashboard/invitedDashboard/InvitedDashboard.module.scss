@@ -74,6 +74,28 @@
 .empty-wrapper {
   height: 300px;
 }
+
+.dark {
+  background-color: $dark-card;
+  .title {
+    color: rgba($white, 0.87);
+  }
+  .search-wrapper {
+    input {
+      background-color: $dark-card-top;
+      border: none;
+      color: rgba($white, 0.6);
+      &::placeholder {
+        color: rgba($white, 0.6);
+      }
+    }
+  }
+  .invite-list-table {
+    .invite-list-table-header {
+      color: rgba($white, 0.6);
+    }
+  }
+}
 @include tablet {
   .container {
     width: 504px;

@@ -23,7 +23,7 @@ function DashboardList() {
   const router = useRouter();
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['dashboards', page],
+    queryKey: ['dashboard', page],
     queryFn: () => fetchDashboards(page),
   });
 
