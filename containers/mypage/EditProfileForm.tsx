@@ -67,11 +67,9 @@ export default function EditProfileForm() {
     e.preventDefault();
 
     const formProfileData = async () => {
-      const formData: UpdateProfileForm = {};
-
-      if (nickname !== user?.nickname) {
-        formData['nickname'] = nickname;
-      }
+      const formData: UpdateProfileForm = {
+        nickname: nickname || user?.nickname || '', // 닉네임이 항상 포함되도록 처리
+      };
 
       if (!profileImageFile && user?.profileImageUrl) {
         formData['profileImageUrl'] = null;

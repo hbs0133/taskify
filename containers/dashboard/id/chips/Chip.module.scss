@@ -1,68 +1,6 @@
 @use '@/styles/index.scss' as *;
 @import '@/styles/mixins/mixinChip';
 
-// chip - num 컴포넌트
-.num {
-  padding: 3px 6px;
-  border-radius: 4px;
-  background-color: $gray-ee;
-  width: fit-content;
-
-  @include FontStyle(12, 500);
-  line-height: 14.32px;
-  color: $gray-78;
-}
-
-// chip - add 컴포넌트
-.add {
-  @include Flex(row, center, center);
-  width: 22px;
-  height: 22px;
-  padding: 3px;
-  border-radius: 4px;
-
-  background-color: $back-yellow;
-  color: $main-yellow;
-
-  & > svg.add-icon {
-    // 다른 css에서 겹쳐서 명시도 높이기 위한 선택자
-    fill: $main-yellow;
-  }
-
-  @include mobile {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-// chip - card 컴포넌트
-.card {
-  width: fit-content;
-  padding: 4px 6px;
-  border-radius: 4px;
-
-  @include FontStyle(12, 400, 12, 10);
-  @include ResponsiveLineHeight(14.3, 14.3, 12);
-}
-
-// chip - progress 컴포넌트
-.progress {
-  padding: 4px 8px;
-  border-radius: 11px;
-  width: fit-content;
-
-  @include Flex(row, null, center);
-  gap: 3px;
-
-  @include FontStyle(10, 400);
-  line-height: 12px;
-
-  @include GetProgressChipColor('violet');
-  svg {
-    @include GetCircleColor('violet');
-  }
-}
-
 .violet {
   @include GetProgressChipColor('violet');
 
@@ -109,5 +47,95 @@
 
   svg {
     @include GetCircleColor('blue');
+  }
+}
+
+// chip - num 컴포넌트
+.num {
+  padding: 3px 6px;
+  border-radius: 4px;
+  background-color: $gray-ee;
+  width: fit-content;
+
+  @include FontStyle(12, 500);
+  line-height: 14.32px;
+  color: $gray-78;
+}
+
+// chip - add 컴포넌트
+.add {
+  @include Flex(row, center, center);
+  width: 22px;
+  height: 22px;
+  padding: 3px;
+  border-radius: 4px;
+
+  background-color: $back-yellow;
+  color: $main-yellow;
+
+  &.dark {
+    background-color: $dark-chip;
+  }
+
+  & > svg.add-icon {
+    // 다른 css에서 겹쳐서 명시도 높이기 위한 선택자
+    fill: $main-yellow;
+  }
+
+  @include mobile {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// chip - card 컴포넌트
+.card {
+  width: fit-content;
+  padding: 4px 6px;
+  border-radius: 4px;
+
+  @include FontStyle(12, 400, 12, 10);
+  @include ResponsiveLineHeight(14.3, 14.3, 12);
+
+  &.dark {
+    background-color: $dark-chip;
+
+    &.pink {
+      color: $pink-f7;
+    }
+    &.blue {
+      color: $blue-db;
+    }
+    &.violet {
+      color: $violet-8;
+    }
+    &.orange {
+      color: $orange-f9;
+    }
+    &.green {
+      color: $green-e7;
+    }
+
+    &.yellow {
+      color: $back-yellow;
+    }
+  }
+}
+
+// chip - progress 컴포넌트
+.progress {
+  padding: 4px 8px;
+  border-radius: 11px;
+  width: fit-content;
+
+  @include Flex(row, null, center);
+  gap: 3px;
+
+  @include FontStyle(10, 400);
+  line-height: 12px;
+
+  @include GetProgressChipColor('violet');
+  svg {
+    @include GetCircleColor('violet');
   }
 }

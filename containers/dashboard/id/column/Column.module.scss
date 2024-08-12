@@ -14,6 +14,21 @@
     outline: 1.5px solid $main-yellow;
   }
 
+  &.dark {
+    border-right: 2px solid $dark-card;
+
+    @include tablet {
+      border-bottom: 2px solid $dark-card;
+    }
+    .setting-icon {
+      fill: rgba($white, 0.87);
+    }
+
+    .column-title {
+      color: rgba($white, 0.87);
+    }
+  }
+
   @include tablet {
     width: 100%;
     height: 346px;
@@ -25,7 +40,7 @@
     padding: 16px 12px 12px;
   }
 
-  svg {
+  .circle-chip {
     @include GetCircleColor('violet');
   }
 
@@ -41,11 +56,11 @@
   .title {
     @include Flex(row, null, center);
     gap: 12px;
-    .column-title {
-      @include FontStyle(18, 700, 16, 14);
-      @include ResponsiveLineHeight(21.5, 21.5, 19);
-      color: $black-33;
-    }
+  }
+  .column-title {
+    @include FontStyle(18, 700, 16, 14);
+    @include ResponsiveLineHeight(21.5, 21.5, 19);
+    color: $black-33;
   }
 }
 
@@ -61,7 +76,9 @@
 }
 
 .setting-icon {
+  fill: $gray-78;
   transition: transform 0.3s ease;
+
   &:hover {
     cursor: pointer;
     animation: rotateClockwise 0.5s ease;

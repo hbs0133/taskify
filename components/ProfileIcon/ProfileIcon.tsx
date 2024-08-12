@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { User } from '@/types/User.interface';
 import styles from './ProfileIcon.module.scss';
 import getBackgroundColor from '@/utils/getBackgroundColor';
-import { url } from 'inspector';
+import { useTheme } from '@/hooks/useThemeContext';
+import classNames from 'classNames';
 
 interface ProfileIconProps {
   nickname: string;
@@ -17,10 +17,11 @@ export function ProfileIcon({
 }: ProfileIconProps) {
   const backColor = getBackgroundColor(nickname);
   const name = compressRemain ? nickname : nickname.substring(0, 1);
+  const { theme } = useTheme();
 
   if (imageUrl)
     return (
-      <div className={styles['profile-img']}>
+      <div className={classNames(styles['profile-img'], styles[theme])}>
         <Image src={imageUrl} alt='프로필' fill className={styles['image']} />
       </div>
     );
@@ -28,7 +29,7 @@ export function ProfileIcon({
   return (
     <div
       style={{ backgroundColor: backColor }}
-      className={styles['profile-img']}
+      className={classNames(styles['profile-img'], styles[theme])}
     >
       <p className={styles['substring']}>{name}</p>
     </div>

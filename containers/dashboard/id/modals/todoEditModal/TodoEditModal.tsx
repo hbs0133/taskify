@@ -13,7 +13,7 @@ import SelectAssigneeDropdown from '@/containers/dashboard/id/dropdown/SelectAss
 import ImageInput from '@/components/Input/ImageInput';
 import getDate from '@/utils/getDate';
 import useToast from '@/hooks/useToast';
-import HashTagsInput from '@/containers/dashboard/id/modals/components/hastagsInput/HashtagsInput';
+import HashTagsInput from '@/containers/dashboard/id/modals/components/hastagsInput/HashtagsInput';
 
 export default function TodoEditModal({ card }: { card: ICard }) {
   const {
@@ -165,7 +165,7 @@ export default function TodoEditModal({ card }: { card: ICard }) {
     if (!isFormValid) {
       toast('error', '모든 필수 입력 항목을 입력해주세요.');
     }
-    
+
     updateColumnMutation.mutate(requestData);
   };
 

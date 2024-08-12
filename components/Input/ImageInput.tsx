@@ -66,7 +66,7 @@ export default function ImageInput({
       )}
 
       <input
-        className='hidden'
+        className={styles['hidden']}
         id={name}
         type='file'
         accept='image/jpeg, image/png'

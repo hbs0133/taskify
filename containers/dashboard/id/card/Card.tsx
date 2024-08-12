@@ -11,11 +11,14 @@ import TodoEditModal from '../modals/todoEditModal/TodoEditModal';
 import { Draggable } from '@hello-pangea/dnd';
 import classNames from 'classNames';
 import getRandomTagColor from '@/utils/getRandomTagColor';
+import { useTheme } from '@/hooks/useThemeContext';
+import { ProfileIcon } from '@/components/ProfileIcon/ProfileIcon';
 
 function Card({ card }: { card: ICard }) {
-  const { id, title, tags, dueDate, imageUrl } = card;
+  const { id, title, tags, dueDate, imageUrl, assignee } = card;
   const { TodoModalId, setOpenTodoModal } = useTodoModalStore();
   const { EditModalId } = useTodoEditModalStore();
+  const { theme } = useTheme();
 
   return (
     <>
@@ -29,6 +32,7 @@ function Card({ card }: { card: ICard }) {
             className={classNames(
               styles['card'],
               snapshot.isDragging ? styles['is-dragging'] : null,
+              styles[theme],
             )}
             onClick={() => setOpenTodoModal(id)}
           >
@@ -60,9 +64,16 @@ function Card({ card }: { card: ICard }) {
                 <div className={styles['card-bottom']}>
                   <div className={styles['date']}>
                     <IconCalender width={18} height={18} />
-                    <p>{getDate(dueDate)}</p>
+                    <p className={styles['small-txt']}>{getDate(dueDate)}</p>
                   </div>
-                  <div className={styles['profile']}>J</div>
+                  {assignee ? (
+                    <ProfileIcon
+                      nickname={assignee.nickname}
+                      imageUrl={assignee.profileImageUrl}
+                    />
+                  ) : (
+                    <p className={styles['small-txt']}>담당자 미정</p>
+                  )}
                 </div>
               </div>
             </div>

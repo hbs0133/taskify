@@ -91,6 +91,11 @@ export default function SignUpForm() {
     setCloseModal();
   };
 
+  const handleOpenModal = () => {
+    setCheckTerms(false);
+    setOpenModal();
+  };
+
   return (
     <form className={styles[`form`]} onSubmit={handleSubmit(onSubmit)}>
       <TextInputLabel
@@ -126,10 +131,9 @@ export default function SignUpForm() {
           id='terms'
           type='checkbox'
           checked={checkTerms}
-          onChange={() => {
-            setCheckTerms(!checkTerms);
-          }}
+          onChange={handleOpenModal}
           onClick={setOpenModal}
+          readOnly
         />{' '}
         <label htmlFor='terms' className={styles[`agree`]}>
           이용약관에 동의합니다.

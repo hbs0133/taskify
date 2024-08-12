@@ -18,7 +18,13 @@ function InvitedDashboard() {
     isFetchingNextPage,
     isLoading,
     error,
-  } = useInfiniteScroll('invitation', ['invitations']);
+  } = useInfiniteScroll(
+    'invitation',
+    ['invitations', searchValue],
+    searchValue,
+  );
+
+  //?title=${searchValue}
 
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -60,12 +66,18 @@ function InvitedDashboard() {
               {data.map((item: IInvitation) => (
                 <InviteListItem key={item.id} item={item} />
               ))}
+              {hasNextPage && (
+                <div ref={ref} className={styles['ref']}>
+                  .
+                </div>
+              )}
             </div>
-            <div ref={ref}></div>
           </div>
         </>
       ) : (
-        <EmptyColumn />
+        <div className={styles['empty-wrapper']}>
+          <EmptyColumn />
+        </div>
       )}
     </div>
   );

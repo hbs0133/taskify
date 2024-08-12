@@ -1,9 +1,14 @@
-@use '@/styles/index.scss' as *;
+@import '@/styles/index';
 
 .main-section {
   background-color: $gray-fa;
   width: fit-content;
   @include Flex(row, null, flex-start);
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &.dark {
+    background-color: $dark-theme; // 임시
+  }
 
   @include tablet {
     flex-wrap: wrap;

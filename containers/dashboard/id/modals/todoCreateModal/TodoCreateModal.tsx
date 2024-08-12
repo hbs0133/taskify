@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import useToast from '@/hooks/useToast';
 import getDate from '@/utils/getDate';
 import useTodoCreateModalStore from '@/stores/TodoCreateModalStore';
-import HashTagsInput from '../components/\bhastagsInput/HashtagsInput';
+import HashTagsInput from '../components/hastagsInput/HashtagsInput';
 
 export default function TodoCreateModal({ columnId }: { columnId: number }) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);

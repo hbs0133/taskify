@@ -18,9 +18,12 @@ import TodoCreateModal from '../modals/todoCreateModal/TodoCreateModal';
 import useTodoCreateModalStore from '@/stores/TodoCreateModalStore';
 import DeleteAlertModal from '../modals/deleteAlertModal';
 import useDeleteAlertModalStore from '@/stores/useDeleteAlertModalStore';
+import { useTheme } from '@/hooks/useThemeContext';
 
 function Column({ id, title }: { id: number; title: string }) {
   const { toast } = useToast();
+
+  const { theme } = useTheme();
 
   const {
     data: cardList,
@@ -56,11 +59,12 @@ function Column({ id, title }: { id: number; title: string }) {
           className={classNames(
             styles['column'],
             snapshot.isDraggingOver ? styles['is-dragging-over'] : null,
+            styles[theme],
           )}
         >
           <div className={styles['header']}>
             <div className={styles['header-left']}>
-              <IconCircleChip />
+              <IconCircleChip className={styles['circle-chip']} />
               <div className={styles['title']}>
                 <p className={styles['column-title']}>{title}</p>{' '}
                 <ChipNum num={totalCount} />

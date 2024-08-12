@@ -12,7 +12,7 @@
   .input {
     width: 100%;
     max-width: 100%;
-    padding: 0.5rem 1rem;
+    padding: 15px 16px;
     border: 1px solid $gray-d9;
     border-radius: 8px;
     outline: none;
@@ -22,10 +22,6 @@
 
     &:focus {
       border-color: #007bff;
-    }
-
-    @include mobile {
-      padding: 0.5rem 0.75rem;
     }
   }
 

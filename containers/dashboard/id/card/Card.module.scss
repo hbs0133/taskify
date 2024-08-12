@@ -13,6 +13,17 @@
   @include Flex(column, null, null);
   @include ResponsiveGap(12, 20, 11);
 
+  &.dark {
+    background-color: $dark-card;
+    border: 1px solid $dark-card;
+
+    .title,
+    p {
+      // color: #b9bbbc;
+      color: rgba($white, 0.87);
+    }
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -61,6 +72,13 @@
     }
   }
 
+  .title {
+    @include FontStyle(16, 500, 16, 14);
+    @include ResponsiveLineHeight(19, 19, 16.7);
+    line-height: 19px;
+    color: $black-33;
+  }
+
   // 이미지 제외 부분
   .card-content {
     @include Flex(column, null, null);
@@ -71,36 +89,11 @@
     }
 
     // 제목
-    .title {
-      @include FontStyle(16, 500, 16, 14);
-      @include ResponsiveLineHeight(19, 19, 16.7);
-      line-height: 19px;
-      color: $black-33;
-    }
 
     // 태그들
     .tags {
       @include Flex(row, null, center);
       gap: 6px;
-    }
-
-    // 날짜랑 달력 svg
-    .date {
-      @include Flex(row, null, flex-end);
-      gap: 6px;
-
-      svg {
-        @include mobile {
-          width: 14px;
-          height: 14px;
-        }
-      }
-
-      p {
-        color: $gray-78;
-        @include FontStyle(12, 500, 12, 10);
-        @include ResponsiveLineHeight(14, 14, 12);
-      }
     }
 
     // 날짜랑 프로필
@@ -114,19 +107,21 @@
   }
 }
 
-// 임시 프로필 스타일 (패스해도 되는 부분)
-// 헤더에서 쓰이길래 공통 컴포넌트에서 만들면 지우겠습니다~!
-.profile {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  @include Flex(row, center, center);
-  background-color: #a3c4a2;
-  color: $white;
+// 날짜랑 달력 svg
+.date {
+  @include Flex(row, null, flex-end);
+  gap: 6px;
 
-  font-family: Montserrat;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 14.63px;
-  text-align: center;
+  svg {
+    @include mobile {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.small-txt {
+  color: $gray-78;
+  @include FontStyle(12, 500, 12, 10);
+  @include ResponsiveLineHeight(14, 14, 12);
 }

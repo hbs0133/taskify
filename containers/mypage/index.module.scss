@@ -5,8 +5,7 @@
   flex-direction: column;
   padding: 16px 12px;
   color: $black-33;
-  margin-left: 320px;
-  margin-top: 75px;
+  background-color: $gray-fa;
   @include tablet {
     padding: 20px;
   }
@@ -22,19 +21,23 @@
     }
     .profile {
       margin-bottom: 24px;
-      margin-top: 24px;
       font-weight: 700;
       font-size: 24px;
       line-height: 32px;
 
       @include tablet {
-        margin-top: 32px;
         margin-bottom: 32px;
+      }
+
+      @include mobile {
+        font-size: 18px;
+        line-height: 26px;
       }
     }
   }
   .pwd-box {
     width: 100%;
+    margin-top: 24px;
     max-width: 670px;
     border-radius: 8px;
     background-color: $white;
@@ -54,6 +57,10 @@
       @include tablet {
         margin-top: 32px;
         margin-bottom: 32px;
+      }
+      @include mobile {
+        font-size: 18px;
+        line-height: 26px;
       }
     }
   }

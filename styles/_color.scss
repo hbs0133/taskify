@@ -38,3 +38,18 @@ $white-fe: #fefefe;
 
 $back-yellow: #fdf4d4;
 $main-yellow-active: #fdb400;
+
+// $dark-theme: #121212;
+
+// 임시 컬러입니다
+// 다크 모드에서 쓸 색상은 'dark' 접두사
+$dark-theme: #171b1c; // 다크 배경색
+$dark-card: #41474b; // 위에 쌓이는 요소..? 원래 밝은색이었던것
+$dark-card-top: #63696d; // 더 위에
+$dark-chip: #787486;
+$dark-secondary-btn: #9fa6b2;
+
+// 텍스트는 여기 참고, 투명도는 변수로 사용이 안 됩니다
+// rbga(#white, 0.87); // 고강도 텍스트
+// rbga(#white, 0.6); // 중강도 텍스트
+// rbga(#white, 0.38); // 저강도 텍스트

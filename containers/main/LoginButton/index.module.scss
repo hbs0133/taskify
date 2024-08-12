@@ -2,11 +2,11 @@
 
 @keyframes fly-1 {
   from {
-    transform: translateY(0.1em);
+    transform: translateY(0.1em) translateX(0.8em);
   }
 
   to {
-    transform: translateY(-0.1em);
+    transform: translateY(-0.1em) translateX(0.9em);
   }
 }
 

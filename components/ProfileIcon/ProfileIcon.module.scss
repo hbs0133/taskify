@@ -12,6 +12,10 @@
   @include Flex(row, center, center);
   position: relative;
 
+  &.dark {
+    border: 2px solid rgba($white, 0.5);
+  }
+
   .image {
     border-radius: 70%;
     overflow: hidden;
