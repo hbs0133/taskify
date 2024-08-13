@@ -6,6 +6,7 @@ import EmptyColumn from '@/containers/dashboard/id/column/EmptyColumn';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import { useInView } from 'react-intersection-observer';
 import { useTheme } from '@/hooks/useThemeContext';
+import Spinner from '@/components/Spinner';
 
 function InvitedDashboard() {
   const [searchValue, setSearchValue] = useState('');
@@ -46,7 +47,9 @@ function InvitedDashboard() {
         />
       </div>
       {isLoading ? (
-        <div className={styles['loading']}>loading...</div>
+        <div className={styles['loading']}>
+          <Spinner />
+        </div>
       ) : (
         <>
           {data && data.length > 0 ? (

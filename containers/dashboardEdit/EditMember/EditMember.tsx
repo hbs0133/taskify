@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { usePagination } from '@/hooks/usePagination';
 import Pagination from '@/components/Pagination';
 import { useTheme } from '@/hooks/useThemeContext';
+import Spinner from '@/components/Spinner';
 
 function EditMember({ id }: { id: string | string[] | undefined }) {
   const [page, setPage] = useState(1);
@@ -31,6 +32,12 @@ function EditMember({ id }: { id: string | string[] | undefined }) {
     setPage,
     'members',
   );
+  if (isLoading)
+    return (
+      <div className={`${styles['container']} ${themeStyle}`}>
+        <Spinner />
+      </div>
+    );
 
   return (
     <div className={`${styles['container']} ${themeStyle}`}>
@@ -45,12 +52,10 @@ function EditMember({ id }: { id: string | string[] | undefined }) {
       </div>
       <div className={styles['member-list']}>
         <p className={styles['member-list-header-title']}>이름</p>
-        {
-          //타입정리 필요
-          data?.members.map((item: any) => (
-            <MemberListItem key={item.id} item={item} />
-          ))
-        }
+        {//타입정리 필요
+        data?.members.map((item: any) => (
+          <MemberListItem key={item.id} item={item} />
+        ))}
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import ButtonForDashboard from '@/components/ButtonForDashboard';
 import { usePagination } from '@/hooks/usePagination';
 import Pagination from '@/components/Pagination';
 import { useTheme } from '@/hooks/useThemeContext';
+import Spinner from '@/components/Spinner';
 
 const fetchDashboards = async (page: number) => {
   const response = await instance.get(
@@ -41,7 +42,12 @@ function DashboardList() {
     'dashboards',
   );
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <div className={styles['container']}>
+        <Spinner />
+      </div>
+    );
 
   return (
     <div className={`${styles['container']} ${themeStyle}`}>

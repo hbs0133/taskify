@@ -71,6 +71,11 @@
   }
 }
 
+.loading {
+  @include Flex(row, center, center);
+  @include ResponsiveHeight(300px, 200px, 200px);
+}
+
 .empty-wrapper {
   @include ResponsiveHeight(300px, 200px, 200px);
 }

@@ -10,6 +10,7 @@ import { usePagination } from '@/hooks/usePagination';
 import Pagination from '@/components/Pagination';
 import EmptyColumn from '@/containers/dashboard/id/column/EmptyColumn';
 import { useTheme } from '@/hooks/useThemeContext';
+import Spinner from '@/components/Spinner';
 
 function EditInvitation({ id }: { id: string | string[] | undefined }) {
   const [page, setPage] = useState(1);
@@ -38,7 +39,13 @@ function EditInvitation({ id }: { id: string | string[] | undefined }) {
     setPage,
     'invitations',
   );
-  if (isLoading) return <p>Loading...</p>;
+
+  if (isLoading)
+    return (
+      <div className={`${styles['container']} ${themeStyle}`}>
+        <Spinner />
+      </div>
+    );
 
   return (
     <div>
@@ -69,7 +76,7 @@ function EditInvitation({ id }: { id: string | string[] | undefined }) {
         <div className={styles['invitation-list']}>
           <p className={styles['invitation-list-header-title']}>이메일</p>
           {isLoading ? (
-            <p>Loading...</p>
+            <Spinner />
           ) : data && data.invitations && data.invitations.length > 0 ? (
             data.invitations.map((item: any) => (
               <InvitationListItem key={item.id} id={id} item={item} />
