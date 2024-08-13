@@ -2,6 +2,8 @@ import IconAddBox from './icons/ic_add_box.svg';
 import IconAddBoxWhite from './icons/ic_add_box_white.svg';
 import IconArrowDown from './icons/ic_arrow_down.svg';
 import IconArrowForward from './icons/ic_arrow_forward.svg';
+import IconArrowBackward from './icons/ic_arrow_backward.svg';
+import IconArrowBackwardDark from './icons/ic_arrow_backward_dark.svg';
 import IconCalender from './icons/ic_calender.svg';
 import IconClose from './icons/ic_close.svg';
 import IconCodeit20 from './icons/ic_codeit_20.svg';
@@ -13,6 +15,7 @@ import IconEmptyInvitation from './icons/ic_empty_invitation.svg';
 import IconVisible from './icons/ic_visible.svg';
 import IconSetting from './icons/ic_setting.svg';
 import IconSearch from './icons/ic_search.svg';
+import IconSearchDark from './icons/ic_search_dark.svg';
 import IconLogoSmall from './icons/ic_logo_small.svg';
 import IconLogoLarge from './icons/ic_logo_large.svg';
 import IconLogoHeader from './icons/ic_logo_header.svg';
@@ -33,6 +36,8 @@ export {
   IconAddBoxWhite,
   IconArrowDown,
   IconArrowForward,
+  IconArrowBackward,
+  IconArrowBackwardDark,
   IconCalender,
   IconClose,
   IconCodeit20,
@@ -44,6 +49,7 @@ export {
   IconVisible,
   IconSetting,
   IconSearch,
+  IconSearchDark,
   IconLogoSmall,
   IconLogoLarge,
   IconLogoHeader,

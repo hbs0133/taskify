@@ -72,7 +72,7 @@
 }
 
 .empty-wrapper {
-  height: 300px;
+  @include ResponsiveHeight(300px, 200px, 200px);
 }
 
 .dark {
@@ -116,6 +116,9 @@
         .invite-list-table-header-invite-accepted {
           transform: translateX(50px);
         }
+      }
+      .invite-list-table-body {
+        height: 200px;
       }
     }
   }

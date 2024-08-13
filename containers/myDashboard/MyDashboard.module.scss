@@ -5,9 +5,14 @@
   @include ResponsiveGap(40, 48, 24);
   @include ResponsivePadding(0 40px, 0 40px, 0 24px);
   background-color: $gray-fa;
-  width: 100%;
   height: 100vh;
 }
 .dark {
   background-color: $dark-theme;
+}
+
+@include tablet {
+  .container {
+    @include Flex(column, null, center);
+  }
 }

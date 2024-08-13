@@ -9,6 +9,7 @@ import { useCreateDashboardModalStore } from '@/stores/modalStore';
 import ButtonForDashboard from '@/components/ButtonForDashboard';
 import { usePagination } from '@/hooks/usePagination';
 import Pagination from '@/components/Pagination';
+import { useTheme } from '@/hooks/useThemeContext';
 
 const fetchDashboards = async (page: number) => {
   const response = await instance.get(
@@ -21,6 +22,8 @@ function DashboardList() {
   const [page, setPage] = useState(1);
   const { isModalOpen, setOpenModal } = useCreateDashboardModalStore();
   const router = useRouter();
+  const { theme } = useTheme();
+  const themeStyle = styles[`${theme}`];
 
   const { isLoading, error, data } = useQuery({
     queryKey: ['dashboard', page],
@@ -41,7 +44,7 @@ function DashboardList() {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <div className={styles['container']}>
+    <div className={`${styles['container']} ${themeStyle}`}>
       <div className={styles['dash-board-list']}>
         <Button buttonType='add-board' onClick={setOpenModal}>
           새로운 대시보드

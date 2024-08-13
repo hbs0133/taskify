@@ -1,6 +1,6 @@
 import InviteListItem from '../InviteListItem/InviteListItem';
 import styles from './InvitedDashboard.module.scss';
-import { IconSearch } from '@/assets/icongroup';
+import { IconSearch, IconSearchDark } from '@/assets/icongroup';
 import { useState, useEffect } from 'react';
 import EmptyColumn from '@/containers/dashboard/id/column/EmptyColumn';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
@@ -37,7 +37,7 @@ function InvitedDashboard() {
     <div className={`${styles['container']} ${themeStyle}`}>
       <h2 className={styles['title']}>초대받은 대시보드</h2>
       <div className={styles['search-wrapper']}>
-        <IconSearch />
+        {theme !== 'dark' ? <IconSearch /> : <IconSearchDark />}
         <input
           type='text'
           value={searchValue}

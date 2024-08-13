@@ -11,6 +11,25 @@
     padding-bottom: 8px;
     @include FontStyle('2xl', 700, '2xl', 'xl');
   }
+  button {
+    transition: 0.3s;
+    &:hover {
+      background-color: $main-yellow-active;
+    }
+    &:disabled {
+      cursor: not-allowed;
+      background-color: $gray-d9;
+    }
+  }
+  &.dark {
+    background: $dark-card;
+    color: rgba($white, 0.87);
+    button {
+      &:disabled {
+        background-color: $dark-card-top;
+      }
+    }
+  }
 }
 
 .label-container {

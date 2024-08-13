@@ -15,6 +15,13 @@
   &:last-child {
     border-bottom: none;
   }
+  button {
+    border: 1px solid $main-yellow;
+    &:hover {
+      color: $main-yellow-active;
+      border: 1px solid $main-yellow-active;
+    }
+  }
   &.dark {
     border-bottom: 1px solid $dark-card-top;
     &:last-child {
@@ -23,6 +30,14 @@
     .member-info {
       .member-name {
         color: rgba($white, 0.87);
+      }
+    }
+    button {
+      border: 1px solid $main-yellow;
+      color: $main-yellow;
+      &:hover {
+        color: $main-yellow-active;
+        border: 1px solid $main-yellow-active;
       }
     }
   }

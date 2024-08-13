@@ -8,6 +8,24 @@
     grid-template-rows: repeat(2, 1fr);
     gap: 13px;
     margin-bottom: 12px;
+    button {
+      transition: 0.3s;
+      &:hover {
+        border: 1px solid $main-yellow;
+        background-color: $white;
+      }
+    }
+  }
+  &.dark {
+    .dash-board-list {
+      button {
+        border: 1px solid $dark-card;
+        &:hover {
+          border: 1px solid $dark-card-top;
+          background-color: $dark-card;
+        }
+      }
+    }
   }
 }
 

@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import instance from '@/services/axios';
 import DashboardLayout from '../dashboardLayout';
-import { IconArrowForward } from '@/assets/icongroup';
+import { IconArrowBackward, IconArrowBackwardDark } from '@/assets/icongroup';
 import useToast from '@/hooks/useToast';
 import { useTheme } from '@/hooks/useThemeContext';
 
@@ -42,7 +42,7 @@ function DashboardEdit() {
     <DashboardLayout>
       <div className={`${styles['container']} ${themeStyle}`}>
         <Link href={`/dashboard/${id}`} className={styles['link']}>
-          <IconArrowForward />
+          {theme !== 'dark' ? <IconArrowBackward /> : <IconArrowBackwardDark />}
           돌아가기
         </Link>
         <EditDashboardName id={id} />
