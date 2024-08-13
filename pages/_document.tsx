@@ -8,9 +8,9 @@ export default function Document() {
         <meta property='og:title' content='SCHEDO' />
         <meta
           property='og:description'
-          content='스마트하게 나의 일정을 관리해보자!'
+          content='SCHEDO에서 모든 일정을 쉽게 관리하세요!'
         />
-        <meta property='og:url' content='https://schedo-7-6.netlify.app/' />
+        <meta property='og:url' content='https://sched6.netlify.app/' />
         <meta property='og:image' content='/og_image.png' />
         <link rel='icon' href='/favicon.png' />
       </Head>
