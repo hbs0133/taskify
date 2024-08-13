@@ -17,3 +17,10 @@
     }
   }
 }
+
+@include mobile {
+  .pagination {
+    @include FontStyle(12, 400);
+    gap: 0;
+  }
+}

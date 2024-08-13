@@ -21,7 +21,7 @@ function EditMember({ id }: { id: string | string[] | undefined }) {
   };
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['dashboardMember', id],
+    queryKey: ['dashboardMember', id, page],
     queryFn: () => fetchDashboardMember(id),
     enabled: !!id,
   });

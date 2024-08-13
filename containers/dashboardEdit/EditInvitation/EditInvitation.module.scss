@@ -59,3 +59,17 @@
     }
   }
 }
+
+@include mobile {
+  .container {
+    .section-header {
+      .section-header-actions {
+        @include Flex(column, null, null);
+        .dashboard-manage-button {
+          margin-left: auto;
+          padding: 5px 5px;
+        }
+      }
+    }
+  }
+}

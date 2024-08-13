@@ -22,13 +22,13 @@ function EditInvitation({ id }: { id: string | string[] | undefined }) {
     id: string | string[] | undefined,
   ) => {
     const response = await instance.get(
-      `/dashboards/${id}/invitations?page=1&size=5`,
+      `/dashboards/${id}/invitations?page=${page}&size=5`,
     );
     return response.data;
   };
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['invitations'],
+    queryKey: ['invitations', page],
     queryFn: () => fetchDashboardInvitations(id),
     enabled: !!id,
   });
